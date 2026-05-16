@@ -1,0 +1,14 @@
+## 1. Implementation
+- [x] 1.1 Add Electron main/preload/renderer files for a GUI launcher.
+- [x] 1.2 Build the form for common and advanced crawl options.
+- [x] 1.3 Convert form values into a safe `jav crawl` argument array.
+- [x] 1.4 Spawn the local CLI process and stream stdout/stderr to the UI.
+- [x] 1.5 Add Start, Stop, Clear Log, Open Output Folder, and Update Address actions.
+- [x] 1.6 Add npm scripts for GUI development and Windows `.exe` packaging.
+- [x] 1.7 Document GUI usage and package output location.
+- [x] 1.8 Verify `npm run build` and the GUI command generation path.
+- [x] 1.9 Add result browser for `filmData.json`, poster images, and magnet links.
+- [x] 1.10 Add copy actions for single and grouped magnet links.
+- [x] 1.11 Refactor GUI into collapsible sidebar, dashboard, poster wall, and bottom log console.
+- [x] 1.12 Add compact magnet interactions with hover quick actions and collapsed link lists.
+- [x] 1.13 Replace fixed panes with icon rail, configuration drawer, log drawer, and poster detail modal.

@@ -1,0 +1,14 @@
+/node_modules
+/dist
+release/
+.tern-project
+.eslintrc.json
+
+/test
+/.vscode
+/.trae
+error.log
+combined.log
+bash.exe.stackdump
+filmData.json
+debug.log

@@ -1,0 +1,114 @@
+{
+  "name": "jav-scrapy-gui",
+  "version": "1.1.2",
+  "type": "commonjs",
+  "description": "JAV content scraper with Electron GUI launcher",
+  "main": "dist/jav.js",
+  "preferGlobal": true,
+  "dependencies": {
+    "@types/cli-progress": "^3.11.6",
+    "@types/tunnel": "^0.0.7",
+    "async": "^3.2.6",
+    "axios": "1.13.2",
+    "axios-retry": "^4.5.0",
+    "chalk": "^5.4.1",
+    "cheerio": "^1.1.2",
+    "cli-progress": "^3.12.0",
+    "commander": "12.1.0",
+    
+    "puppeteer-core": "^24.28.0",
+    "tunnel": "^0.0.6",
+    "winreg": "^1.2.5",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@types/async": "^3.2.25",
+    "@types/cheerio": "^0.22.35",
+    "@types/node": "^24.10.0",
+    "@types/puppeteer-core": "^5.4.0",
+    "@types/winreg": "^1.2.36",
+    "conventional-changelog-cli": "^4.1.0",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
+    "electron": "^39.0.0",
+    "electron-builder": "^26.0.12",
+    "husky": "^9.1.7",
+    "mocha": "^11.7.4",
+    "nodemon": "^3.1.10",
+    "temp": "^0.9.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "bin": {
+    "jav": "./dist/jav.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "mocha test/*.test.js",
+    "build": "npx tsc",
+    "dev": "ts-node src/jav.ts",
+    "dev:watch": "nodemon --exec ts-node src/jav.ts",
+    "gui": "npm run build && electron gui/main.js",
+    "gui:pack": "npm run build && electron-builder --win portable",
+    "release": "npm run build && npm version",
+    "release:major": "npm run build && npm version major -m \"chore(release): %s\"",
+    "release:minor": "npm run build && npm version minor -m \"chore(release): %s\"",
+    "release:patch": "npm run build && npm version patch -m \"chore(release): %s\"",
+    "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s",
+    "changelog:first": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s -r 0",
+    "preversion": "npm test",
+    "version": "npm run changelog && git add CHANGELOG.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liangyu-love/jav-scrapy-gui.git"
+  },
+  "keywords": [
+    "crawler",
+    "scrapy",
+    "jav",
+    "magnet",
+    "torrent",
+    "nodejs",
+    "typescript",
+    "electron",
+    "gui"
+  ],
+  "homepage": "https://github.com/liangyu-love/jav-scrapy-gui#readme",
+  "bugs": {
+    "url": "https://github.com/liangyu-love/jav-scrapy-gui/issues"
+  },
+  "build": {
+    "appId": "com.raawaa.javscrapy.launcher",
+    "productName": "JAV Scrapy Launcher",
+    "asar": true,
+    "extraMetadata": {
+      "main": "gui/main.js"
+    },
+    "files": [
+      "gui/**/*",
+      "dist/**/*",
+      "package.json",
+      "node_modules/**/*",
+      "!dist/**/*.map"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "signAndEditExecutable": false,
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "requestedExecutionLevel": "asInvoker"
+    }
+  }
+}
